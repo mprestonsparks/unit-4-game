@@ -21,8 +21,10 @@ var crystal = { // images clicked on the determine increase to "score" var, each
     };
  
 // DECLARE FUNCTIONS
-function targetNumValue() { // calc random # between 19-120 to set "targetNum" var
-
+function targetNumValue(min, max) { // calc random # between 19-120 to set "targetNum" var
+    min = Math.ceil(19);
+    max = Math.floor(120);
+    targetNum = Math.round(Math.floor(Math.random() * (max - min + 1)) + min);
 }
 
 function crystalValues() { // calc random # between 1-12 to set crystal.[color].value
@@ -45,6 +47,21 @@ function gameRecord() { // calculate/display # of games won/lost
 
 }
 
+// CALL FUNCTIONS
+
+// Initialize New Game
+//// Reset score
+score = 0;
+
+//// Update gamesWon & gamesLost
+gameRecord();
+
+//// Assign new TargetNum
+targetNumValue();
+console.log("targetNum: " + targetNum);
+
+//// Assign new crystal values
+crystalValues();
 
 
 console.log(crystal.yellow.color);
