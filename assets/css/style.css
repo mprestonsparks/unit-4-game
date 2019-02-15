@@ -5,6 +5,20 @@
     padding: 2% 0 2% 0;
 }
 
+.rules {
+    background-color: lightgoldenrodyellow;
+    padding: 1% 0 1% 0;
+}
+
+.target-num {
+    padding: 2% 0 2% 0;
+}
+
+.user-score {
+    padding: 2% 0 5% 0;
+    width: 100%;
+}
+
 .crystals {
     height: 50px;
     text-align: center;
