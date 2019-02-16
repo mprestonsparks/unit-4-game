@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid main-container">
                 <div class="row header"> <!-- ROW 1 // HEADER-->
                     <div class="col-sm-12">
                         <h1>Crystal Collector</h1>
@@ -46,8 +46,8 @@
                         <div class="card mx-auto bg-light" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">SCORE</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">SCORE</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h6 id="score-display" class="card-subtitle mb-2 text-muted">0</h6>
+                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                             </div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">TARGET NUMBER</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">TARGET NUMBER</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
                             </div>
                         </div>
                     </div>
@@ -65,24 +65,26 @@
                     </div>
 
                     <div class="col-md-4 border rounded mx-auto bg-light pt-2 pb-2">
-                        <div class="row win-row">
-                            <div class="col-md-6 title">
-                               GAMES WON:
+                    <div class="container">
+                            <div class="row win-row">
+                                <div class="col-md-6 title">
+                                   GAMES WON:
+                                </div>
+                                <div class="col-md-6">
+                                    A number
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                A number
+                            <div class="row loss-row">
+                                <div class="col-md-6 title">
+                                    GAMES LOST:
+                                </div>
+                                <div class="col-md-6">
+                                    A number
+                                </div>
                             </div>
                         </div>
-                        <div class="row loss-row">
-                            <div class="col-md-6 title">
-                                GAMES LOST:
-                            </div>
-                            <div class="col-md-6">
-                                A number
-                            </div>
-                        </div>
+                        <!-- FIX USING SAMPLE: https://www.codeply.com/go/p4SsxMOjmP/bootstrap-4-card-split-2-columns -->
                     </div>
-                    <!-- FIX USING SAMPLE: https://www.codeply.com/go/p4SsxMOjmP/bootstrap-4-card-split-2-columns -->
                 </div>
 
             <div class="row crystals"> <!-- ROW 4 // CRYSTAL ICONS -->
@@ -90,25 +92,25 @@
                 <div class="col-sm-2">
                     <figure class="figure">
                         <img id="yellow-crystal" class="img-fluid" src="assets/images/yellow-6.png" alt="yellow crystal">
-                        <figcaption class="figure-caption"> TEXT </figcaption>
+                        <figcaption id="yellow-crystal-caption" class="figure-caption">  </figcaption>
                     </figure>
                 </div>
                 <div class="col-sm-2">
                         <figure class="figure">
                             <img id="green-crystal" class="img-fluid" src="assets/images/green-8.jpg" alt="green crystal">
-                            <figcaption class="figure-caption"> TEXT </figcaption>
+                            <figcaption id="green-crystal-caption" class="figure-caption"> </figcaption>
                         </figure>
                 </div>
                 <div class="col-sm-2">
                         <figure class="figure">
                         <img id="blue-crystal" class="img-fluid" src="assets/images/blue-3.jpg" alt="blue crystal">
-                        <figcaption class="figure-caption"> TEXT </figcaption>
+                        <figcaption id="blue-crystal-caption" class="figure-caption"> </figcaption>
                         </figure>
                 </div>
                 <div class="col-sm-2">
                     <figure class="figure">
                     <img id="red-crystal" class="img-fluid" src="assets/images/red-5.jpg" alt="red crystal">
-                    <figcaption class="figure-caption"> TEXT </figcaption>
+                    <figcaption id="red-crystal-caption" class="figure-caption">  </figcaption>
                     </figure>    
                 </div>
                 <div class="col-sm-2"></div>

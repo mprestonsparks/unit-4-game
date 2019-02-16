@@ -98,14 +98,29 @@ crystalValues(); //** INCOMPLETE
 // GAME LOGIC
 //// Add to score counter based on crystal clicks
 //// On click of yellow crystal
-$("#yellow-crystal").on("click", function(e){
-    // display on crystal
-    // push to score    
-}) // FIX FUNCTION (crystal.yellow.value is wrong, should be replaced by function call of calcScore()-color
-$("#green-crystal").on("click", crystal.green.value);
-$("#blue-crystal").on("click", crystal.blue.value);
-$("#red-crystal").on("click", crystal.red.value);
-
+$("#yellow-crystal").on("click", function(){
+    $("#yellow-crystal-caption").text("VALUE: " + crystal.yellow.value);// display on crystal
+    score = score + crystal.yellow.value;
+    $("#score-display").text(score);
+})
+// $("#green-crystal").on("click", crystal.green.value);
+$("#green-crystal").on("click", function(){
+    $("#green-crystal-caption").text("VALUE: " + crystal.green.value);// display on crystal
+    score = score + crystal.green.value;
+    $("#score-display").text(score);
+})
+// $("#blue-crystal").on("click", crystal.blue.value);
+$("#blue-crystal").on("click", function(){
+    $("#blue-crystal-caption").text("VALUE: " + crystal.blue.value);// display on crystal
+    score = score + crystal.gblue.value;
+    $("#score-display").text(score);
+})
+// $("#red-crystal").on("click", crystal.red.value);
+$("#red-crystal").on("click", function(){
+    $("#red-crystal-caption").text("VALUE: " + crystal.red.value);// display on crystal
+    score = score + crystal.red.value;
+    $("#score-display").text(score);
+})
 
 
 

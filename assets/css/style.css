@@ -1,4 +1,9 @@
 
+.main-container {
+    height: 100vh;
+    overflow: auto;
+}
+
 .header {
     text-align: center;
     background-color: lightgrey;
