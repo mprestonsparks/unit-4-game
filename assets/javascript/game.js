@@ -13,6 +13,8 @@ var targetNum; // random # displayed at beginning of game; matching "score" var 
 var score = 0; // user's score, used to update score counter and determine if game won or lost
 var gamesWon = 0; // # of games user has won
 var gamesLost = 0; // # of games user has lost
+var winAlert;
+var lossAlert;
 
 var crystal = { 
     yellow: {color:"yellow", sides:6, value:0},
@@ -43,8 +45,9 @@ function crystalValues() { // calc random # between 1-12 to set crystal.[color].
 
 function gameStatus() { // determine if game is won/lost; won if "score" = "targetNum", lost if "score" > "targetNum"
     if (score===targetNum) {
+        randomWinAlert();
         // Display alert "You won!"
-        alert("You won!");
+        alert(winAlert);
         // Update # of games won
         gamesWon = gamesWon + 1; // Increase # of gamesWon by 1
         $("#gamesWonDisplay").text(gamesWon);
@@ -54,6 +57,9 @@ function gameStatus() { // determine if game is won/lost; won if "score" = "targ
         //Reset targetNum & update on page
         targetNumValue(); // Generate a new random targetNum
         $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
+        crystalValues(); // Generate new random crystal values
+        $(".crystal-values").css("display","none");
+        // $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
         } if (score > targetNum) {
             // Display alert "You lost!"
             alert("You lost!");
@@ -81,6 +87,7 @@ crystalValues();
 //// GAME LOGIC
 // On click of yellow crystal, do...
 $("#yellow-crystal").on("click", function(){
+    $(".crystal-values").css("display","auto");
     $("#yellow-crystal-caption").text("VALUE: " + crystal.yellow.value); // Display crystal's value
     score = score + crystal.yellow.value; // Increase score by amount of crystal's value
     $("#scoreDisplay").text(score); // Update score on page
@@ -108,3 +115,18 @@ $("#red-crystal").on("click", function(){
     gameStatus(); // Run gameStatus function (checks for win/loss, resets game)
 })
 
+//// EXTRA STUFF
+// Add variety of win/loss alerts
+var winAlerts = [
+    "Wow, you actually won...",
+    "Guess we have a professional counter in the building",
+    "win alert 3",
+    "win alert 4",
+    "win alert 5"
+]
+function randomWinAlert() { 
+    var alertMin = Math.ceil(0);
+    var alertMax = Math.floor(4);
+    randomWinAlertNum = createRandom(alertMin, alertMax);
+    winAlert = winAlerts[randomWinAlertNum]
+}   
