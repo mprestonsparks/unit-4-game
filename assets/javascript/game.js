@@ -49,30 +49,35 @@ function crystalValues() { // calc random # between 1-12 to set crystal.[color].
 
 function gameStatus() { // determine if game is won/lost; won if "score" = "targetNum", lost if "score" > "targetNum"
     if (score===targetNum) {
+        // Display alert "You won!"
+        alert("You won!");
+        // Update # of games won
         gamesWon = gamesWon + 1; // Increase # of gamesWon by 1
         $("#gamesWonDisplay").text(gamesWon);
-        // score = 0; // Reset score to 0 for new game
-        // ** ALERT GAME WON/DISPLAY MESSAGE
+        // Reset score to 0 & update on page
+        score = 0; // Reset score to 0 for new game
+        $("#score-display").text(score); // Update score displayed to 0
+        //Reset targetNum & update on page
+        targetNumValue(); // Generate a new random targetNum
+        $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
         } if (score > targetNum) {
+            // Display alert "You lost!"
+            alert("You lost!");
+            // Update # of games lost
             gamesLost = gamesLost + 1; // Increase # of gamesLost by 1
             $("#gamesLostDisplay").text(gamesLost);
-            // ** ALERT GAME LOST/DISPLAY MESSAGE
-            // score = 0; // Reset score to 0 for new game
+            // Reset score to 0 & update on page
+            score = 0; // Reset score to 0 for new game
+            $("#score-display").text(score); // Update score on page to 0
+            // Reset targetNum & update on page
+            targetNumValue(); // Generate a new random targetNum
+            $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
 
         }
     }
 
 
-// function gameRecord() { // calculate/display # of games won/lost
-
-// }
-
 // CALL FUNCTIONS
-
-// INITIALIZE NEW GAME
-
-//// Update gamesWon & gamesLost
-// gameRecord();
 
 //// Assign new TargetNum
 targetNumValue();
@@ -80,15 +85,13 @@ targetNumValue();
 //// Assign new crystal values
 crystalValues(); //** INCOMPLETE
 
-// gameStatus();
 // GAME LOGIC
-//// Add to score counter based on crystal clicks
 //// On click of yellow crystal, do...
 $("#yellow-crystal").on("click", function(){
-    $("#yellow-crystal-caption").text("VALUE: " + crystal.yellow.value);// display on crystal
-    score = score + crystal.yellow.value;
-    $("#score-display").text(score);
-    gameStatus();
+    $("#yellow-crystal-caption").text("VALUE: " + crystal.yellow.value); // Display crystal's value
+    score = score + crystal.yellow.value; // Increase score by amount of crystal's value
+    $("#score-display").text(score); // Update score on page
+    gameStatus(); // Run gameStatus function (checks for win/loss, resets game)
     console.log("--------------------------------");
     console.log("score...",score);
     console.log("targetNum...",targetNum);
@@ -102,7 +105,7 @@ $("#green-crystal").on("click", function(){
     $("#green-crystal-caption").text("VALUE: " + crystal.green.value);// display on crystal
     score = score + crystal.green.value;
     $("#score-display").text(score);
-    gameStatus();
+    gameStatus(); // Run gameStatus function (checks for win/loss, resets game)
     console.log("--------------------------------");
     console.log("score...",score);
     console.log("targetNum...",targetNum);
@@ -115,7 +118,7 @@ $("#blue-crystal").on("click", function(){
     $("#blue-crystal-caption").text("VALUE: " + crystal.blue.value);// display on crystal
     score = score + crystal.blue.value;
     $("#score-display").text(score);
-    gameStatus();
+    gameStatus(); // Run gameStatus function (checks for win/loss, resets game)
     console.log("--------------------------------");
     console.log("score...",score);
     console.log("targetNum...",targetNum);
@@ -128,7 +131,7 @@ $("#red-crystal").on("click", function(){
     $("#red-crystal-caption").text("VALUE: " + crystal.red.value);// display on crystal
     score = score + crystal.red.value;
     $("#score-display").text(score);
-    gameStatus();
+    gameStatus(); // Run gameStatus function (checks for win/loss, resets game)
     console.log("--------------------------------");
     console.log("score...",score);
     console.log("targetNum...",targetNum);
@@ -136,7 +139,4 @@ $("#red-crystal").on("click", function(){
     console.log("gamesWon...",gamesWon);
     console.log("gamesLost...",gamesLost);
 })
-
-//// Reset score
-// score = 0; //*** FIX THIS */
 
