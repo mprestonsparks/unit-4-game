@@ -10,9 +10,9 @@
 
 // DECLARE VARIABLES
 var targetNum; // random # displayed at beginning of game; matching "score" var to this # wins game, exceeding loses game
-var score; // user's score, used to update score counter and determine if game won or lost
-var gamesWon; // # of games user has won
-var gamesLost; // # of games user has lost
+var score = 0; // user's score, used to update score counter and determine if game won or lost
+var gamesWon = 0; // # of games user has won
+var gamesLost = 0; // # of games user has lost
 
 var crystal = { // images clicked on the determine increase to "score" var, each color scores a different amount, new value assigned each game
     yellow: {color:"yellow", sides:6, value:0},
@@ -21,7 +21,7 @@ var crystal = { // images clicked on the determine increase to "score" var, each
     red: {color:"red", sides:5, value:0}
     };
  
-// DECLARE FUNCTIONS
+// WRITE FUNCTIONS
 function createRandom (min, max) {
     return Math.round(Math.floor(Math.random() * (max - min + 1)) + min)
 }
@@ -30,6 +30,7 @@ function targetNumValue() { // calc random # between 19-120 to set "targetNum" v
     var targetMin = Math.ceil(19);
     var targetMax = Math.floor(120);
     targetNum = createRandom(targetMin, targetMax);
+    $("#targetNumDisplay").text(targetNum);
 }
 
 function crystalValues() { // calc random # between 1-12 to set crystal.[color].value
@@ -46,47 +47,32 @@ function crystalValues() { // calc random # between 1-12 to set crystal.[color].
     })
 }
 
-function crystalDisplay() { // **NEST THIS TO crystalValues; If, on new game, crystal is unclicked then hide crystal.value
-
-}
-
-// function calcScore() { //Calculate/update game score; ie # of points/sum of crystal.value clicks per game
-//     this.yellow = function() {
-
-//     };
-//     this.green = function() {
-
-//     };
-//     this.green = function() {
-
-//     };
-//     this.blue = function() {
-
-//     };
-    
-//     var score = 0;
-//     score += 1; // ** NEST FUNCTION SO THAT EACH COLOR IS RAN THROUGH FUNCTION
-//     function plus() {score += 1;}
-//     plus();
-//     return score;
-// }
-
 function gameStatus() { // determine if game is won/lost; won if "score" = "targetNum", lost if "score" > "targetNum"
+    if (score===targetNum) {
+        gamesWon = gamesWon + 1; // Increase # of gamesWon by 1
+        $("#gamesWonDisplay").text(gamesWon);
+        // score = 0; // Reset score to 0 for new game
+        // ** ALERT GAME WON/DISPLAY MESSAGE
+        } if (score > targetNum) {
+            gamesLost = gamesLost + 1; // Increase # of gamesLost by 1
+            $("#gamesLostDisplay").text(gamesLost);
+            // ** ALERT GAME LOST/DISPLAY MESSAGE
+            // score = 0; // Reset score to 0 for new game
 
-}
+        }
+    }
 
-function gameRecord() { // calculate/display # of games won/lost
 
-}
+// function gameRecord() { // calculate/display # of games won/lost
+
+// }
 
 // CALL FUNCTIONS
 
 // INITIALIZE NEW GAME
-//// Reset score
-var score = 0;
 
 //// Update gamesWon & gamesLost
-gameRecord();
+// gameRecord();
 
 //// Assign new TargetNum
 targetNumValue();
@@ -94,41 +80,63 @@ targetNumValue();
 //// Assign new crystal values
 crystalValues(); //** INCOMPLETE
 
-
+// gameStatus();
 // GAME LOGIC
 //// Add to score counter based on crystal clicks
-//// On click of yellow crystal
+//// On click of yellow crystal, do...
 $("#yellow-crystal").on("click", function(){
     $("#yellow-crystal-caption").text("VALUE: " + crystal.yellow.value);// display on crystal
     score = score + crystal.yellow.value;
     $("#score-display").text(score);
+    gameStatus();
+    console.log("--------------------------------");
+    console.log("score...",score);
+    console.log("targetNum...",targetNum);
+    console.log("score=targetNum...",score===targetNum);
+    console.log("score>targetNum...",score>targetNum);
+    console.log("gamesWon...",gamesWon);
+    console.log("gamesLost...",gamesLost);
 })
-// $("#green-crystal").on("click", crystal.green.value);
+
 $("#green-crystal").on("click", function(){
     $("#green-crystal-caption").text("VALUE: " + crystal.green.value);// display on crystal
     score = score + crystal.green.value;
     $("#score-display").text(score);
+    gameStatus();
+    console.log("--------------------------------");
+    console.log("score...",score);
+    console.log("targetNum...",targetNum);
+    console.log("score=targetNum...",score===targetNum);
+    console.log("gamesWon...",gamesWon);
+    console.log("gamesLost...",gamesLost);
 })
-// $("#blue-crystal").on("click", crystal.blue.value);
+
 $("#blue-crystal").on("click", function(){
     $("#blue-crystal-caption").text("VALUE: " + crystal.blue.value);// display on crystal
-    score = score + crystal.gblue.value;
+    score = score + crystal.blue.value;
     $("#score-display").text(score);
+    gameStatus();
+    console.log("--------------------------------");
+    console.log("score...",score);
+    console.log("targetNum...",targetNum);
+    console.log("score=targetNum...",score===targetNum);
+    console.log("gamesWon...",gamesWon);
+    console.log("gamesLost...",gamesLost);
 })
 // $("#red-crystal").on("click", crystal.red.value);
 $("#red-crystal").on("click", function(){
     $("#red-crystal-caption").text("VALUE: " + crystal.red.value);// display on crystal
     score = score + crystal.red.value;
     $("#score-display").text(score);
+    gameStatus();
+    console.log("--------------------------------");
+    console.log("score...",score);
+    console.log("targetNum...",targetNum);
+    console.log("score=targetNum...",score===targetNum);
+    console.log("gamesWon...",gamesWon);
+    console.log("gamesLost...",gamesLost);
 })
 
+//// Reset score
+// score = 0; //*** FIX THIS */
 
-
-
-
-// TEST CONSOLE.LOGS -- REMOVE BEFORE SUBMITTING
-console.log("targetNum: " + targetNum);
-console.log("yellow.crystal.value: " + crystal.yellow.value);
-console.log("red crystal value: " + crystal.red.value);
-var yellowCrystalValue = crystal.yellow.value=10;
-console.log(yellowCrystalValue);
