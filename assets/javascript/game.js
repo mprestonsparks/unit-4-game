@@ -9,8 +9,8 @@
 
 
 // DECLARE VARIABLES
-var targetNum; // random # displayed at beginning of game; matching "score" var to this # wins game, exceeding loses game
-var score = 0; // user's score, used to update score counter and determine if game won or lost
+var targetNum; // Random # displayed at beginning of game; matching "score" var to this # wins game, exceeding loses game
+var score = 0; // User's score, used to update score counter and determine if game won or lost
 var gamesWon = 0; // # of games user has won
 var gamesLost = 0; // # of games user has lost
 var winAlert;
@@ -28,26 +28,26 @@ function createRandom (min, max) {
     return Math.round(Math.floor(Math.random() * (max - min + 1)) + min)
 }
 
-function targetNumValue() { // calc random # between 19-120 to set "targetNum" var
+function targetNumValue() { // Calc random # between 19-120 to set "targetNum" var
     var targetMin = Math.ceil(19);
     var targetMax = Math.floor(120);
     targetNum = createRandom(targetMin, targetMax);
     $("#targetNumDisplay").text(targetNum);
 }
 
-function crystalValues() { // calc random # between 1-12 to set crystal.[color].value
+function crystalValues() { // Calc random # between 1-12 to set crystal.[color].value
     var crystalMin = Math.ceil(1);
     var crystalMax = Math.floor(12);    
-    Object.keys(crystal).forEach(color => {   // ** READ ON THIS **
+    Object.keys(crystal).forEach(color => {
         crystal[color].value = createRandom(crystalMin, crystalMax)
     })
 }
 
-function gameStatus() { // determine if game is won/lost; won if "score" = "targetNum", lost if "score" > "targetNum"
-    if (score===targetNum) {
-        randomWinAlert();
-        // Display alert "You won!"
-        alert(winAlert);
+function gameStatus() { // Checks if game won/lost, updates for new game
+    if (score===targetNum) { // Determines if game is won/lost
+        // Alert win
+        randomWinAlert(); // Select a random Win Alert
+        alert(winAlert); // Display Win Alert
         // Update # of games won
         gamesWon = gamesWon + 1; // Increase # of gamesWon by 1
         $("#gamesWonDisplay").text(gamesWon);
@@ -59,11 +59,10 @@ function gameStatus() { // determine if game is won/lost; won if "score" = "targ
         $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
         $(".crystal-values").text(" "); // Hide crystal value until clicked
         crystalValues(); // Generate new random crystal values
-        // $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
         } if (score > targetNum) {
-            // Display alert "You lost!"
-            randomlossAlert();
-            alert(lossAlert);
+            // Alert loss
+            randomlossAlert(); // Select a random Loss Alert
+            alert(lossAlert); // Display Loss Alert
             // Update # of games lost
             gamesLost = gamesLost + 1; // Increase # of gamesLost by 1
             $("#gamesLostDisplay").text(gamesLost);
@@ -81,10 +80,10 @@ function gameStatus() { // determine if game is won/lost; won if "score" = "targ
 
 //// CALL FUNCTIONS
 
-// Assign new TargetNum
+// Assign new TargetNum at beginning of game
 targetNumValue();
 
-//// Assign new crystal values
+//// Assign new crystal values at beginning of game
 crystalValues();
 
 //// GAME LOGIC
