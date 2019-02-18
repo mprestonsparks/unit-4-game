@@ -1,118 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
+
 <body>
     <div class="container-fluid main-container">
-                <div class="row header"> <!-- ROW 1 // HEADER-->
-                    <div class="col-sm-12">
-                        <h1>Crystal Collector</h1>
-                    </div>
-                </div>
-                <div class="row rules"> <!-- ROW 2 // RULES -->
-                    <div class="col-sm-12">
-                        <h3>Rules:</h3>
-                        <p>You will be given a random number at the beginning of the game.</p>
-                        <p>There are four crystals below. By clicking on a crystal you will add
-                           a specific amount of points to your total score.</p>
-                        <p>You win the game by matching your total score to the target number.
-                           <br>If your total score exceeds the target number, you lose.</p>
-                        <p>Each crystal's value is hidden until clicked.</p>    
-                        <p>The target number and crystals are given new random values at
-                           the beginning of each game.</p>
-                    </div>
-                </div>
-
-                <div class="row target-num"> <!-- ROW 3// SCORE, TARGET#, RECORD -->
-                    <div class="col-sm-12 col-md-2"> <!-- SCORE -->
-                        <div class="card mx-auto bg-light" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">SCORE</h5>
-                                <h6 id="scoreDisplay" class="card-subtitle mb-2 text-muted font-weight-bold">0</h6>
-                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-3"> <!-- TARGET -->
-                        <div class="card mx-auto bg-light" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">TARGET NUMBER</h5>
-                                <h6 id="targetNumDisplay" class="card-subtitle mb-2 text-muted font-weight-bold"></h6>
-                                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-0 col-md-2"> <!-- EMPTY -->
-                    </div>
-
-                    <div class="col-md-4 border rounded mx-auto bg-light pt-2 pb-2">
-                    <div class="container">
-                            <div class="row win-row">
-                                <div class="col-md-6 title">
-                                   GAMES WON:
-                                </div>
-                                <div id="gamesWonDisplay" class="col-md-6 text-muted font-weight-bold">
-                                    
-                                </div>
-                            </div>
-                            <div class="row loss-row">
-                                <div class="col-md-6 title">
-                                    GAMES LOST:
-                                </div>
-                                <div id="gamesLostDisplay" class="col-md-6 text-muted font-weight-bold">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FIX USING SAMPLE: https://www.codeply.com/go/p4SsxMOjmP/bootstrap-4-card-split-2-columns -->
-                    </div>
-                </div>
-
-            <div class="row crystals"> <!-- ROW 4 // CRYSTAL ICONS -->
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2">
-                    <figure class="figure">
-                        <img id="yellow-crystal" class="img-fluid" src="assets/images/yellow-6.png" alt="yellow crystal">
-                        <figcaption id="yellow-crystal-caption" class="figure-caption crystal-values">  </figcaption>
-                    </figure>
-                </div>
-                <div class="col-sm-2">
-                        <figure class="figure">
-                            <img id="green-crystal" class="img-fluid" src="assets/images/green-8.jpg" alt="green crystal">
-                            <figcaption id="green-crystal-caption" class="figure-caption crystal-values"> </figcaption>
-                        </figure>
-                </div>
-                <div class="col-sm-2">
-                        <figure class="figure">
-                        <img id="blue-crystal" class="img-fluid" src="assets/images/blue-3.jpg" alt="blue crystal">
-                        <figcaption id="blue-crystal-caption" class="figure-caption crystal-values"> </figcaption>
-                        </figure>
-                </div>
-                <div class="col-sm-2">
-                    <figure class="figure">
-                    <img id="red-crystal" class="img-fluid" src="assets/images/red-5.jpg" alt="red crystal">
-                    <figcaption id="red-crystal-caption" class="figure-caption crystal-values">  </figcaption>
-                    </figure>    
-                </div>
-                <div class="col-sm-2"></div>
+        <div class="row header">
+            <!-- ROW 1 // HEADER-->
+            <div class="col-sm-12">
+                <h1>Crystal Collector</h1>
             </div>
-        
-    
+        </div>
+        <div class="row rules">
+            <!-- ROW 2 // RULES -->
+            <div class="col-sm-12">
+                <h3>Rules:</h3>
+                <p>You will be given a random number at the beginning of the game.</p>
+                <p>There are four crystals below. By clicking on a crystal you will add
+                    a specific amount of points to your total score.</p>
+                <p>You win the game by matching your total score to the target number.
+                    <br>If your total score exceeds the target number, you lose.</p>
+                <p>Each crystal's value is hidden until clicked.</p>
+                <p>The target number and crystals are given new random values at
+                    the beginning of each game.</p>
+            </div>
+        </div>
+        <div class="row target-num">
+            <!-- ROW 3// SCORE, TARGET#, RECORD -->
+            <div class="col-sm-12 col-md-2">
+                <!-- SCORE -->
+                <div class="card mx-auto bg-light" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">SCORE</h5>
+                        <h6 id="scoreDisplay" class="card-subtitle mb-2 text-muted font-weight-bold">0</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <!-- TARGET -->
+                <div class="card mx-auto bg-light" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">TARGET NUMBER</h5>
+                        <h6 id="targetNumDisplay" class="card-subtitle mb-2 text-muted font-weight-bold"></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-0 col-md-2">
+                <!-- EMPTY -->
+            </div>
+            <div class="col-md-4 border rounded mx-auto bg-light pt-2 pb-2">
+                <div class="container">
+                    <div class="row win-row">
+                        <div class="col-md-6 title">
+                            GAMES WON:
+                        </div>
+                        <div id="gamesWonDisplay" class="col-md-6 text-muted font-weight-bold">
+
+                        </div>
+                    </div>
+                    <div class="row loss-row">
+                        <div class="col-md-6 title">
+                            GAMES LOST:
+                        </div>
+                        <div id="gamesLostDisplay" class="col-md-6 text-muted font-weight-bold">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row crystals">
+            <!-- ROW 4 // CRYSTAL ICONS -->
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <figure class="figure">
+                    <img id="yellow-crystal" class="img-fluid" src="assets/images/yellow-6.png" alt="yellow crystal">
+                    <figcaption id="yellow-crystal-caption" class="figure-caption crystal-values"> </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure">
+                    <img id="green-crystal" class="img-fluid" src="assets/images/green-8.jpg" alt="green crystal">
+                    <figcaption id="green-crystal-caption" class="figure-caption crystal-values"> </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure">
+                    <img id="blue-crystal" class="img-fluid" src="assets/images/blue-3.jpg" alt="blue crystal">
+                    <figcaption id="blue-crystal-caption" class="figure-caption crystal-values"> </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure">
+                    <img id="red-crystal" class="img-fluid" src="assets/images/red-5.jpg" alt="red crystal">
+                    <figcaption id="red-crystal-caption" class="figure-caption crystal-values"> </figcaption>
+                </figure>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
     </div>
-
-
     <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
