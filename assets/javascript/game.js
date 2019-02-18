@@ -57,8 +57,8 @@ function gameStatus() { // determine if game is won/lost; won if "score" = "targ
         //Reset targetNum & update on page
         targetNumValue(); // Generate a new random targetNum
         $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
+        $(".crystal-values").text(" "); // Hide crystal value until clicked
         crystalValues(); // Generate new random crystal values
-        $(".crystal-values").css("display","none");
         // $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
         } if (score > targetNum) {
             // Display alert "You lost!"
@@ -72,6 +72,8 @@ function gameStatus() { // determine if game is won/lost; won if "score" = "targ
             // Reset targetNum & update on page
             targetNumValue(); // Generate a new random targetNum
             $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
+            $(".crystal-values").text(" "); // Hide crystal value until clicked
+            crystalValues(); // Generate new random crystal values
         }
     }
 
@@ -87,7 +89,6 @@ crystalValues();
 //// GAME LOGIC
 // On click of yellow crystal, do...
 $("#yellow-crystal").on("click", function(){
-    $(".crystal-values").css("display","auto");
     $("#yellow-crystal-caption").text("VALUE: " + crystal.yellow.value); // Display crystal's value
     score = score + crystal.yellow.value; // Increase score by amount of crystal's value
     $("#scoreDisplay").text(score); // Update score on page
