@@ -153,7 +153,15 @@ $(".difficulty-buttons").on("click", function() {
     console.log( "easy-mode-button checked... ",$("#easy-mode-button-input").prop("checked",) );
     console.log( "hard-mode-button checked... ",$("#hard-mode-button-input").prop("checked",) )
 })
-   
-
-    
-
+  
+// Create arrays to solve for prime #s
+for (var i=1; i<=10; i++) {
+    var numerators = [];
+    numerators.push(i);
+    var denominators = [];
+    for (var x=i+1; x<10; x++) {
+        denominators.push(x);
+    }
+        console.log("numerator.."+numerators+"\n");
+        console.log("denominator.."+denominators+"\n");
+}
