@@ -62,7 +62,8 @@ function gameStatus() { // determine if game is won/lost; won if "score" = "targ
         // $("#targetNumDisplay").text(targetNumValue); // Update targetNum on page
         } if (score > targetNum) {
             // Display alert "You lost!"
-            alert("You lost!");
+            randomlossAlert();
+            alert(lossAlert);
             // Update # of games lost
             gamesLost = gamesLost + 1; // Increase # of gamesLost by 1
             $("#gamesLostDisplay").text(gamesLost);
@@ -119,15 +120,29 @@ $("#red-crystal").on("click", function(){
 //// EXTRA STUFF
 // Add variety of win/loss alerts
 var winAlerts = [
-    "Wow, you actually won...",
-    "Guess we have a professional counter in the building",
-    "win alert 3",
-    "win alert 4",
-    "win alert 5"
+    "Wow, you actually won...\n\nYou won.",
+    "Guess we have a professional counter in the building...\n\nYou won.",
+    "Bet you can't win the next one...\n\n\You won.",
+    "You got lucky...\n\nYou won.",
+    "You won. Good for you."
 ]
 function randomWinAlert() { 
     var alertMin = Math.ceil(0);
     var alertMax = Math.floor(4);
     randomWinAlertNum = createRandom(alertMin, alertMax);
     winAlert = winAlerts[randomWinAlertNum]
+}   
+
+var lossAlerts = [
+    "Maybe next time...\n\nYou lost.",
+    "Can't win 'em all\n\nYou lost.",
+    "Guess today's not your day\n\nYou lost.",
+    "Are you actually trying??\n\nYou lost.",
+    "You won!\n\nPSYCHE You lost."
+]
+function randomlossAlert() { 
+    var alertMin = Math.ceil(0);
+    var alertMax = Math.floor(4);
+    randomLossAlertNum = createRandom(alertMin, alertMax);
+    lossAlert = lossAlerts[randomLossAlertNum]
 }   
