@@ -94,6 +94,7 @@ $("#yellow-crystal").on("click", function () {
     gameStatus(); // Run gameStatus function (checks for win/loss, resets game)
 })
 
+
 $("#green-crystal").on("click", function () {
     $("#green-crystal-caption").text("VALUE: " + crystal.green.value);// display on crystal
     score = score + crystal.green.value; // Increase score by amount of crystal's value
@@ -144,3 +145,15 @@ function randomlossAlert() {
     randomLossAlertNum = createRandom(alertMin, alertMax);
     lossAlert = lossAlerts[randomLossAlertNum]
 }   
+
+// TESTING //
+
+
+$(".difficulty-buttons").on("click", function() {
+    console.log( "easy-mode-button checked... ",$("#easy-mode-button-input").prop("checked",) );
+    console.log( "hard-mode-button checked... ",$("#hard-mode-button-input").prop("checked",) )
+})
+   
+
+    
+

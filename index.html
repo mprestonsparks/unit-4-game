@@ -32,7 +32,7 @@
         </div>
         <div class="row rules">
             <!-- ROW 2 // RULES -->
-            <div class="col-sm-12">
+            <div class="col-sm-12 col-md-10">
                 <h3>Rules:</h3>
                 <p>You will be given a random number at the beginning of the game.</p>
                 <p>There are four crystals below. By clicking on a crystal you will add
@@ -42,6 +42,16 @@
                 <p>Each crystal's value is hidden until clicked.</p>
                 <p>The target number and crystals are given new random values at
                     the beginning of each game.</p>
+            </div>
+            <div class="col-md-2 col-sm-12">
+                <div class="btn-group btn-group-toggle form-check difficulty-buttons" data-toggle="buttons">
+                    <label class="form-check-label btn btn-secondary active" for="easy-mode-button" id="easy-mode-button">
+                      <input class="form-check-input" type="radio" name="difficulty-buttons" id="easy-mode-button-input" autocomplete="off" value="easy"> Easy
+                    </label>
+                    <label class="form-check-label btn btn-secondary" for="hard-mode-button">
+                      <input class="form-check-input" type="radio" name="difficulty-buttons" id="hard-mode-button-input" autocomplete="off"> Hard
+                    </label>
+                </div>
             </div>
         </div>
         <div class="row target-num">
