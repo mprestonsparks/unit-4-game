@@ -155,13 +155,32 @@ $(".difficulty-buttons").on("click", function() {
 })
   
 // Create arrays to solve for prime #s
-for (var i=1; i<=10; i++) {
-    var numerators = [];
+var maxNumber = 10
+var numerators = [];
+for (var i=2; i<=maxNumber; i++) {
     numerators.push(i);
-    var denominators = [];
-    for (var x=i+1; x<10; x++) {
-        denominators.push(x);
-    }
-        console.log("numerator.."+numerators+"\n");
-        console.log("denominator.."+denominators+"\n");
+    console.log("numerator.."+numerators+"\n");
 }
+
+var denominators = [];
+for (var i=2; i<=maxNumber; i++) {
+    var j = i-1
+    denominators.push(j);
+    console.log("denominator.."+denominators+"\n");
+}
+
+var kList = [];
+for (var i=0; i<numerators.length; i++) {
+    var x = numerators[2];
+    if (denominators[i]<x) {
+        // var k = Math.floor((x/denominators[i])*10)/10; // Round result to 10 decimal
+        var k = x%denominators[i] // Prime nums have modulus = 0
+
+        // var k = numerators[i] / denominators.slice[i,0];
+        kList.push(k);
+    }
+    console.log("k...",kList+"\n");
+}
+
+console.log("num[0]... ",numerators[0]);
+console.log("den[0]... ",denominators[0]);
