@@ -172,20 +172,49 @@ for (var i=2; i<=maxNumber; i++) {
 }
 
 // Perform arithmetic operations to find prime numbers via loops
-var moduliList = []; // Create an array for results of arithmetic operations
-for (i=0; i<=numerators.length;i++){
-    var m = numerators[i]; // Loop through numerators array
-    for (var i=0; i<=numerators.length; i++) {
-        var x = numerators[(m)]; // For each number in the numerator array
-        if (denominators[i]<x) {
-            // Note for next line--> Prime nums have modulus = 0
-            var modulus = x%denominators[i] // Find the modulus of each num in numerator array divided by each num in denominator array
-            var modulusToString = modulus.toString();
-            moduliList.push(modulusToString); // Push all results to array of moduli
-            console.log("num: ",x," den: ",i,"  ...",x,"/",i);
-        }
-        console.log("modulus...",moduliList);
-    }
-}
+// var moduliList = []; // Create an array for results of arithmetic operations
+// for (i=0; i<=numerators.length;i++){
+//     var m = numerators[i]; // Loop through numerators array
+//     for (var i=0; i<=numerators.length; i++) {
+//         var x = numerators[(m)]; // For each number in the numerator array
+//         if (denominators[i]<x) {
+//             // Note for next line--> Prime nums have modulus = 0
+//             var modulus = x%denominators[i] // Find the modulus of each num in numerator array divided by each num in denominator array
+//             var modulusToString = modulus.toString();
+//             moduliList.push(modulusToString); // Push all results to array of moduli
+//             console.log("num: ",x," den: ",i,"  ...",x,"/",i);
+//         }
+//         console.log("modulus...",moduliList);
+//     }
+// }
 
 // FORMULA ISN'T LOOPING THROUGH THE NUMERATORS ARRAY- IT STOPS AT THE LAST #
+
+// var moduliList = []; // Create an array for results of arithmetic operations
+// for (i=0; i<=numerators.length;i++){
+//     var x = numerators[(i)]; // For each number in the numerator array
+//         if (denominators[i]<x) {
+//             var modulus = x%denominators[i] // Find the modulus of each num in numerator array divided by each num in denominator array
+//             var modulusToString = modulus.toString();
+//             moduliList.push(modulusToString); // Push all results to array of moduli
+//         }
+//         console.log("num: ",x," den: ",i,"  ...",x,"/",i);
+//         console.log("modulus...",moduliList);
+//     }
+
+var moduliList = []; // Create an array for results of arithmetic operations
+
+for (i=0; i<=numerators.length;i++){
+    var m = numerators[i]; // Loop through numerators array
+    console.log("numerators[i]... ",numerators[i]);
+    for (var j=0; j<=denominators.length-1; j++) {
+            // Note for next line--> Prime nums have modulus = 0
+        console.log("denominators[i]... ",denominators[j]);
+        var x = denominators[j];
+        console.log("num: ",m," den: ",x,"  ...",m,"/",x);
+    }
+        var divided = m/x;
+        }
+
+console.log("numnerators.length... ",numerators.length);
+console.log("divided... ",divided);
