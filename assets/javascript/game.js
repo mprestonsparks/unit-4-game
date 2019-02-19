@@ -157,7 +157,7 @@ $(".difficulty-buttons").on("click", function() {
 // Create arrays to solve for prime #s
 var maxNumber = 10 // Set a maximum to solve to
 var numerators = []; // Array to hold numerators
-for (var i=2; i<=maxNumber; i++) { 
+for (var i=0; i<maxNumber; i++) { 
     if (i%2!=0) { // Exclude even numbers
         numerators.push(i); // Make an array of numerators as every # to maxNumber
         console.log("numerator.."+numerators+"\n");
@@ -165,9 +165,9 @@ for (var i=2; i<=maxNumber; i++) {
 }
 
 var denominators = [];
-for (var i=2; i<=maxNumber; i++) {
-    var j = i-1 // Make an array of denominators as every numerator less 1
-    denominators.push(j); // Push denominators to array
+for (var i=1; i<maxNumber; i++) {
+    // var j = i // Make an array of denominators as every numerator less 1
+    denominators.push(i); // Push denominators to array
     console.log("denominator.."+denominators+"\n");
 }
 
@@ -204,17 +204,22 @@ for (var i=2; i<=maxNumber; i++) {
 
 var moduliList = []; // Create an array for results of arithmetic operations
 
-for (i=0; i<=numerators.length;i++){
+for (i=0; i<numerators.length;i++){
     var m = numerators[i]; // Loop through numerators array
-    console.log("numerators[i]... ",numerators[i]);
-    for (var j=0; j<=denominators.length-1; j++) {
+    for (var j=0; j<numerators[i]; j++) {
             // Note for next line--> Prime nums have modulus = 0
-        console.log("denominators[i]... ",denominators[j]);
-        var x = denominators[j];
-        console.log("num: ",m," den: ",x,"  ...",m,"/",x);
-    }
-        var divided = m/x;
+        if (denominators[j] <= numerators[i]) {
+            var x = denominators[j];
+            var modulus = m%x;
         }
+            if (!(m===x) || !(x===1) || !(m/x===1)) { // If (denominator# isn't 1) OR (denominator# isn't same # as numerator)
+            moduliList.push(modulus);
+            }
+            console.log("num: ",m," den: ",x,"  ...",m,"/",x);
+            console.log("modulus...",modulus);
+            // console.log("m!=x?",m!=x);
+            console.log("x!=1?",x!=1);
+    }
+}
+console.log("moduliList... ",moduliList);
 
-console.log("numnerators.length... ",numerators.length);
-console.log("divided... ",divided);
