@@ -165,7 +165,8 @@ $(".difficulty-buttons").on("click", function() {
 var maxNumber = 10; // Set a maximum to solve to
 var numerators = []; // Array to hold numerators
 var denominators = []; // Array to hold denominators
-var potentialPrimesList = []; // Array of potential primes
+var potentialPrimesListWithDuplicates = []; // Array of potential primes that includes duplicate values
+var potentialPrimesList = [];
 var primeList = []; // Array of prime #s
 
 for (var i = 0; i < maxNumber; i++) {
@@ -194,7 +195,12 @@ for (i = 0; i < numerators.length; i++) { // Loop through numerators array
       var modulus = n % d; // Modulus of numerator / denominator
         if (modulus === 0) {
             var potentialPrimes = n;
-            potentialPrimesList.push(potentialPrimes); // Push all qualifying #s to array
+            potentialPrimesListWithDuplicates.push(n); // Push all qualifying #s to array
+            potentialPrimesListWithDuplicates.forEach(function(n) {
+                if (potentialPrimesList.indexOf(n) === -1) {
+                    potentialPrimesList.push(n);
+                }
+            })
         }
     }
     console.log("num (n): ", n, " den (d): ", d, "  ...", n, "/", d);
