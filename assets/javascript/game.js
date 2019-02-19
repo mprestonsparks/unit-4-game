@@ -162,7 +162,7 @@ $(".difficulty-buttons").on("click", function() {
 });
 
 // Create arrays to solve for prime #s
-var maxNumber = 10; // Set a maximum to solve to
+var maxNumber = 10; // Set a maximum to solve up to
 var numerators = []; // Array to hold numerators
 var denominators = []; // Array to hold denominators
 var potentialPrimesListWithDuplicates = []; // Array of potential primes that includes duplicate values
@@ -203,16 +203,32 @@ for (i = 0; i < numerators.length; i++) { // Loop through numerators array
             })
         }
     }
-    console.log("num (n): ", n, " den (d): ", d, "  ...", n, "/", d);
-    console.log("modulus...", modulus);
-    console.log("!(n===d)?", !(n === d));
-    console.log("!(d===1)?", !(d === 1));
-    console.log("-------------------");
+    // CONSOLE.LOGS FOR TROUBLESHOOTING-- KEEPING UNTIL FINAL VERSION WORKS
+    // console.log("num (n): ", n, " den (d): ", d, "  ...", n, "/", d);
+    // console.log("modulus...", modulus);
+    // console.log("!(n===d)?", !(n === d));
+    // console.log("!(d===1)?", !(d === 1));
+    // console.log("-------------------");
   }
 }
 console.log("potentialPrimesList... ", potentialPrimesList);
 
-
-
 // STEP 2- Check if each potential prime # is divisible by any # preceeding it in the list
+for (i=1; i<=potentialPrimesList.length - 1; i++) {
+    var length = potentialPrimesList.length;
+    var numerator = potentialPrimesList[length -i];
+    if ((length-i)-i <= potentialPrimesList.length) {
+        var denominator = potentialPrimesList[(length-i)-i];
+        console.log("numerator...",numerator);
+        console.log("denominator..",denominator);
+        if (!(numerator===denominator)) {
+            var test = [];
+            test.push(numerator/denominator);
+            console.log(numerator,"/",denominator,"=",test);
+        }
+    }
+}
+
+// var test = potentialPrimesList[0] / potentialPrimesList[1]
+// console.log("test...",test);
 // STEP 3- If passed step 2 then # is prime, push to primeList
