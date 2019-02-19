@@ -155,27 +155,37 @@ $(".difficulty-buttons").on("click", function() {
 })
   
 // Create arrays to solve for prime #s
-var maxNumber = 10
-var numerators = [];
-for (var i=2; i<=maxNumber; i++) {
-    numerators.push(i);
-    console.log("numerator.."+numerators+"\n");
+var maxNumber = 10 // Set a maximum to solve to
+var numerators = []; // Array to hold numerators
+for (var i=2; i<=maxNumber; i++) { 
+    if (i%2!=0) { // Exclude even numbers
+        numerators.push(i); // Make an array of numerators as every # to maxNumber
+        console.log("numerator.."+numerators+"\n");
+    }
 }
 
 var denominators = [];
 for (var i=2; i<=maxNumber; i++) {
-    var j = i-1
-    denominators.push(j);
+    var j = i-1 // Make an array of denominators as every numerator less 1
+    denominators.push(j); // Push denominators to array
     console.log("denominator.."+denominators+"\n");
 }
 
-var kList = [];
-for (var i=0; i<numerators.length; i++) {
-    var x = numerators[(8)];
-    if (denominators[i]<x) {
-        var k = x%denominators[i] // Prime nums have modulus = 0
-        kList.push(k);
+// Perform arithmetic operations to find prime numbers via loops
+var moduliList = []; // Create an array for results of arithmetic operations
+for (i=0; i<=numerators.length;i++){
+    var m = numerators[i]; // Loop through numerators array
+    for (var i=0; i<=numerators.length; i++) {
+        var x = numerators[(m)]; // For each number in the numerator array
+        if (denominators[i]<x) {
+            // Note for next line--> Prime nums have modulus = 0
+            var modulus = x%denominators[i] // Find the modulus of each num in numerator array divided by each num in denominator array
+            var modulusToString = modulus.toString();
+            moduliList.push(modulusToString); // Push all results to array of moduli
+            console.log("num: ",x," den: ",i,"  ...",x,"/",i);
+        }
+        console.log("modulus...",moduliList);
     }
-    console.log("k...",kList+"\n");
 }
 
+// FORMULA ISN'T LOOPING THROUGH THE NUMERATORS ARRAY- IT STOPS AT THE LAST #
