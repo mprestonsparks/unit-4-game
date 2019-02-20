@@ -214,21 +214,28 @@ for (i = 0; i < numerators.length; i++) { // Loop through numerators array
 console.log("potentialPrimesList... ", potentialPrimesList);
 
 // STEP 2- Check if each potential prime # is divisible by any # preceeding it in the list
-for (i=1; i<=potentialPrimesList.length - 1; i++) {
-    var length = potentialPrimesList.length;
-    var numerator = potentialPrimesList[length -i];
-    if ((length-i)-i <= potentialPrimesList.length) {
-        var denominator = potentialPrimesList[(length-i)-i];
-        console.log("numerator...",numerator);
-        console.log("denominator..",denominator);
-        if (!(numerator===denominator)) {
-            var test = [];
-            test.push(numerator/denominator);
-            console.log(numerator,"/",denominator,"=",test);
-        }
+// for (i=1; i<=potentialPrimesList.length - 1; i++) {
+
+var potPrimeDivisors = [];
+for (i = 1; i < potentialPrimesList.length; i++) { // Loop through numerators array
+  var pN = potentialPrimesList[i -1]; // n = each value in numerators array
+  potPrimeDivisors.push(pN);
+  for (j=0; j<pN; j++) {
+    // if (potentialPrimesList[j] < potentialPrimesList[i]) {
+      var length = potentialPrimesList.length-1;
+      var pD = potentialPrimesList[length-j];
+      if (pD!=pN) {
+        var test = pN / pD;
+        console.log("potPrimeDivisors:",potPrimeDivisors);
+        console.log("pN: ",pN);
+        console.log("pD: ",pD);
+        console.log("pN/pD..",test);
+        console.log("---END OF LOOP---");
+      // }
     }
+  }
+  // var answer = potentialPrimesList[i] / pN;
+  // console.log("answer...",answer);
 }
 
-// var test = potentialPrimesList[0] / potentialPrimesList[1]
-// console.log("test...",test);
 // STEP 3- If passed step 2 then # is prime, push to primeList
