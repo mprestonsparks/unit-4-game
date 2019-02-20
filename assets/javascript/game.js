@@ -162,24 +162,22 @@ $(".difficulty-buttons").on("click", function() {
 });
 
 // Create arrays to solve for prime #s
-var maxNumber = 10; // Set a maximum to solve up to
+var maxNumber = 100; // Set a maximum to solve up to
 var numerators = []; // Array to hold numerators
 var denominators = []; // Array to hold denominators
+var potPrimeDivisors = []; // Divisors used to test potential prime #s
 var potentialPrimesListWithDuplicates = []; // Array of potential primes that includes duplicate values
 var potentialPrimesList = []; // Array of potential primes without duplicates
-var primeListWithDuplicates = []; // Array of prime #s with duplicates
-var primeList = []; // Array of prime #s without duplicates
+var primeList = []; // Array of prime #s 
 
 for (var i = 0; i < maxNumber; i++) {
   if (i % 2 != 0) { // Exclude even numbers
     numerators.push(i); // Make an array of numerators as every # to maxNumber
-    // console.log("numerator.." + numerators + "\n");
   }
 }
 
 for (var i = 1; i < maxNumber; i++) {
   denominators.push(i); // Push denominators to array
-  // console.log("denominator.." + denominators + "\n");
 }
 
 // STEP 1- Generate a list of potential prime #s
@@ -190,55 +188,47 @@ for (i = 0; i < numerators.length; i++) { // Loop through numerators array
       var d = denominators[j]; // // d = each qualifying denominator
     }
     if (!(n === d) || !(d === 1)) { // If (denominator# isn't same # as numerator) OR (denominator# isn't 1)
-      // Note for next line--> Potential prime nums have modulus = 0
+      // Note for next line: Potential prime nums have modulus === 0
       var modulus = n % d; // Modulus of numerator / denominator
-        if (modulus === 0) {
-            var potentialPrimes = n;
+        if (modulus === 0) { // If numerator / denominator has modulus === 0
+            var potentialPrimes = n; // Store numerator # as potential prime #
             potentialPrimesListWithDuplicates.push(n); // Push all qualifying #s to array
             potentialPrimesListWithDuplicates.forEach(function(n) {
-                if (potentialPrimesList.indexOf(n) === -1) {
-                    potentialPrimesList.push(n);
+                if (potentialPrimesList.indexOf(n) === -1) { // If n(potentialPrime) is
+                    potentialPrimesList.push(n); // Prime number array without duplicate values
                 }
             })
         }
     }
-    // CONSOLE.LOGS FOR TROUBLESHOOTING-- KEEPING UNTIL FINAL VERSION WORKS
-    // console.log("num (n): ", n, " den (d): ", d, "  ...", n, "/", d);
-    // console.log("modulus...", modulus);
-    // console.log("!(n===d)?", !(n === d));
-    // console.log("!(d===1)?", !(d === 1));
-    // console.log("-------------------");
-  }
+ }
 }
 console.log("potentialPrimesList... ", potentialPrimesList);
 
 // STEP 2- Check if each potential prime # is divisible by any # preceeding it in the list
-
-var potPrimeDivisors = [];
 for (i = 0; i < potentialPrimesList.length-1; i++) { // Loop through array starting at end
   var length = potentialPrimesList.length-2; // -2 so last value in potentialPrimeList isn't included in denominators
   var pD = potentialPrimesList[length-i]; // Each value in array excluding the last #
   potPrimeDivisors.push(pD);
   for (j=0; j<potPrimeDivisors.length; j++) {
     console.log("j..",j);
-    // if (denominators[j] <= numerators[i]) { // Only continue loop if denominator < numerator
-    // if (potPrimeDivisors[j] >= potentialPrimesList[i]) {
       var length = potentialPrimesList.length-1;
-      var pN = potentialPrimesList[length-j];
-      if (pN!=pD) {
-        // var test = pN / pD;
-        var potPrimeModulus = pN%pD
+      var pN = potentialPrimesList[length-j]; 
+      if (pN!=pD) { // IF to exclude dividing values by themselves
+        var potPrimeModulus = pN%pD // Check each pN for divisibility by pD
         // console.log("pN:",pN," pD:",pD," pN/pD..",pN,"/",pD,"===",test);
         console.log("pN:",pN," pD:",pD," pN/pD..",pN,"%",pD,"===",potPrimeModulus);
-        if (potPrimeModulus!=0) {
-          // ** WRITE CODE TO FIND THIS # (9) AND REMOVE IT FROM POTPRIMELIST
+        if (potPrimeModulus===0) { // If pN is divisible by a # preceeding it
+          var pNToRemove = pN; // Remove pN found to be divisible by a preceeding #
+          var index = potentialPrimesList.indexOf(pNToRemove); // Check primesList for pNToRemove's position in array
+          if (index > -1){ // If pNToRemove is found in the primesList array
+            potentialPrimesList.splice(index,1); // Remove pNToRemove from PrimesList arary
+          }
+          } 
+          console.log("pNToRemove",pN);
         }
         console.log("---END OF LOOP---");
-      // }
+
     }
   }
-  // var answer = potentialPrimesList[i] / pD;
-  // console.log("answer...",answer);
-}
-console.log("primeswdup...",primeListWithDuplicates);
-// STEP 3- If passed step 2 then # is prime, push to primeList
+
+console.log("primeList... ",potentialPrimesList);
