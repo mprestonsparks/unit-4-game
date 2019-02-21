@@ -237,4 +237,4 @@ for (i = 0; i < potentialPrimesList.length - 1; i++) { // Loop through array, st
     console.log("---END OF LOOP---");
   }
 }
-console.log("primeList... ", potentialPrimesList);
+console.log("potentialPrimeList... ", potentialPrimesList);
