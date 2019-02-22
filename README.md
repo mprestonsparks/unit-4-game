@@ -3,4 +3,4 @@
 
 
 ## Purpose
->> A simple game written to demonstrate basic proficiency in using jQuery and writing functions in JavaScript.
+A simple game written to demonstrate basic proficiency in using jQuery and writing functions in JavaScript.
